@@ -30,8 +30,9 @@ jobs:
 
       - name: Run ESLint
         run: npm run lint
-  
-    test:
+
+
+  test:
     name: Dynamic Tests - Jest
     runs-on: ubuntu-latest
     needs: validate
@@ -51,7 +52,8 @@ jobs:
       - name: Run tests
         run: npm test
 
-    build:
+
+  build:
     name: Build Application
     runs-on: ubuntu-latest
     needs: test
@@ -71,10 +73,12 @@ jobs:
       - name: Build application
         run: echo "Building application..."
 
-    deploy-staging:
+
+  deploy-staging:
     name: Deploy to Staging
     runs-on: ubuntu-latest
     needs: build
+
     environment:
       name: staging
 
@@ -82,10 +86,12 @@ jobs:
       - name: Deploy application to staging
         run: echo "Deploying application to staging environment..."
 
-    deploy-production:
+
+  deploy-production:
     name: Deploy to Production
     runs-on: ubuntu-latest
     needs: deploy-staging
+
     environment:
       name: production
 
